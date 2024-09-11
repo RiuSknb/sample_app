@@ -1,22 +1,15 @@
-<h1>投稿一覧</h1>
-
-<%= @lists.each do |list| %>
-
-  <p>タイトル</p>
-  <span>
-    <%= link_to list.title, list_path(list.id) %>
-  </span>
-
-  <p>画像</p>
-  <% if list.image.attached? %>
-    <%= image_tag list.image, size: "200x200" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-  <!--listに紐ついているimageをimage_tagに渡すことで
-  画像を表示することができます。
-  また、オプションとしてsizeを指定することで
-  画像サイズを変更することができ、
-  今回の場合は200x200になるように設定を行なっています。-->
-
+<div class="list-wrap">
+<% @lists.each do |list| %>
+  <div class="list-box">
+    <% if list.image.attached? %>
+      <%= image_tag list.image, size: "200x200" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "200x200" %>
+    <% end %>
+    <div class="list-comment">
+      <span class="list-body"><%= list.body %></span>
+      <span class="list-title"><%=link_to list.title, list_path(list.id) %></span>
+    </div>
+  </div>
 <% end %>
+</div>
