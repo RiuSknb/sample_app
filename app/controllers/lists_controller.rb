@@ -11,7 +11,9 @@ class ListsController < ApplicationController
     list.save
 
     # 4. トップ画面へリダイレクト
-    redirect_to '/top'
+    # redirect_to '/top' を削除して、以下コードに変更
+    # 詳細画面へリダイレクト
+    redirect_to list_path(list.id)
   end
 
 
